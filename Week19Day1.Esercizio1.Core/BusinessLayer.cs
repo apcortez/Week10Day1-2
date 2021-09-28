@@ -93,6 +93,10 @@ namespace Week10Day1.Esercizio1.Core
             s.Esami.Add(esamevalido);
             Corso c = corsiRepo.GetCorsoByNome(esamevalido.Nome);
             s._Immatricolazione.CfuAccumulati += c.CreditiFormativi;
+            if(s._Immatricolazione.CfuAccumulati == s._Immatricolazione._CorsoDiLaurea.Cfu)
+            {
+                s.LaureaRichiesta = true;
+            }
         }
 
         public bool VerificaCfuPerIscrizioneEsame(Corso corsoScelto, Studente s)
