@@ -71,6 +71,10 @@ namespace Week10Day1.Esercizio1
             Console.WriteLine("Accesso avvenuto con successo.\n");
             Console.WriteLine($"Matricola: {s.Id}\nNome: {s.Nome}, Cognome: {s.Cognome} \nIscrizione per laurea in {s._Immatricolazione._CorsoDiLaurea.Nome}, CFU Totali: {s._Immatricolazione._CorsoDiLaurea.Cfu}" +
                 $"\nCFU Accumulati: {s._Immatricolazione.CfuAccumulati}");
+            if(s.LaureaRichiesta == true)
+            {
+                Console.WriteLine("Richiesta Laurea: SI");
+            }
             return s;
         }
 
