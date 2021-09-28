@@ -98,12 +98,19 @@ namespace Week10Day1.Esercizio1.Core
         public bool VerificaCfuPerIscrizioneEsame(Corso corsoScelto, Studente s)
         {
             var cfuOk = s._Immatricolazione.CfuAccumulati + corsoScelto.CreditiFormativi <= s._Immatricolazione._CorsoDiLaurea.Cfu;
-            Esame esame = (s.Esami).Where(e => e.Nome == corsoScelto.Nome).FirstOrDefault();
+            List<Esame> esami = (s.Esami).Where(e => e.Nome == corsoScelto.Nome).ToList();
+            bool pass = false;
             if (cfuOk && !s.LaureaRichiesta)
             {
-                if (esame == null) { return true; }
-                else if (esame != null && esame.Passato == false) { return true; }
-                else return false;
+                if (esami.Count() == 0) { return true; }
+                else
+                { foreach (var es in esami)
+                    {
+                        if (es.Passato == false)
+                        { pass = true; }
+                    }
+                    return pass;
+                }
             }
             else
                 return false;
